@@ -1,4 +1,4 @@
-resource "aws_subnet" "public_1_az_1" {
+resource "aws_subnet" "public_1" {
 
   vpc_id = aws_vpc.main.id
 
@@ -13,7 +13,7 @@ resource "aws_subnet" "public_1_az_1" {
 }
 
 
-resource "aws_subnet" "public_2_az_1" {
+resource "aws_subnet" "public_2" {
 
   vpc_id = aws_vpc.main.id
 
@@ -27,7 +27,7 @@ resource "aws_subnet" "public_2_az_1" {
 
 }
 
-resource "aws_subnet" "public_3_az_1" {
+resource "aws_subnet" "public_3" {
 
   vpc_id = aws_vpc.main.id
 
