@@ -24,13 +24,6 @@
 - Verify whether you have correctly installed Terraform by running this command
   - `terraform -version`
 
-### Terraform Initialize and apply
-
-- Run the following command in the terminal to install dependent packages.\
-  `npm install`
-- Run the following command in the terminal to start the server.\
-  `npm start`
-
 ### Implementing the Infrastructure using Terraform
 
 - Clone the repository
