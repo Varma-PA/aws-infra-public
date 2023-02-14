@@ -55,8 +55,8 @@ variable "subnet_3_private_cidr" {
 }
 
 
-variable "availability_zones" {
-  type = list(string)
-  # default     = ["us-east-1a", "us-east-1b"]
-  description = "Describing the values for availability zones"
-}
+# variable "availability_zones" {
+#   type = list(string)
+#   # default     = ["us-east-1a", "us-east-1b"]
+#   description = "Describing the values for availability zones"
+# }
