@@ -2,7 +2,7 @@ resource "aws_route_table" "public_1" {
   vpc_id = aws_vpc.main.id
 
   route {
-    cidr_block = "0.0.0.0/0"
+    cidr_block = var.route_table_internet_gateway_cidr
     gateway_id = aws_internet_gateway.ig_gateway.id
   }
 
@@ -90,13 +90,10 @@ resource "aws_route_table_association" "private_2" {
 }
 
 resource "aws_route_table_association" "private_3" {
-
   depends_on = [
     aws_route_table.private_1,
     aws_subnet.private_3
   ]
-
-
   route_table_id = aws_route_table.private_1.id
   subnet_id      = aws_subnet.private_3.id
 }
