@@ -4,7 +4,7 @@ resource "aws_subnet" "public_1" {
 
   cidr_block = var.subnet_1_public_cidr
 
-#   availability_zone = var.availability_zones[0]
+  #   availability_zone = var.availability_zones[0]
 
   availability_zone = data.aws_availability_zones.available.names[0]
 
@@ -21,7 +21,7 @@ resource "aws_subnet" "public_2" {
 
   cidr_block = var.subnet_2_public_cidr
 
-#   availability_zone = var.availability_zones[1]
+  #   availability_zone = var.availability_zones[1]
 
   availability_zone = data.aws_availability_zones.available.names[1]
 
@@ -37,7 +37,7 @@ resource "aws_subnet" "public_3" {
 
   cidr_block = var.subnet_3_public_cidr
 
-#   availability_zone = var.availability_zones[2]
+  #   availability_zone = var.availability_zones[2]
 
   availability_zone = data.aws_availability_zones.available.names[2]
 
