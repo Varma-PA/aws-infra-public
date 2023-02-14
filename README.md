@@ -6,7 +6,6 @@
 
 - Prerequisites
 - Terraform Initialize and apply
-- Testing
 
 ### Prerequisites
 
