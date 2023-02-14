@@ -54,6 +54,11 @@ variable "subnet_3_private_cidr" {
   type    = string
 }
 
+variable "route_table_internet_gateway_cidr"{
+  default = "0.0.0.0/0"
+  type = string
+}
+
 
 # variable "availability_zones" {
 #   type = list(string)
