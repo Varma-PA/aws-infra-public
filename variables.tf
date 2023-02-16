@@ -9,7 +9,7 @@ variable "ami_image" {
 }
 
 variable "profile" {
-  default = "default"
+  default = "dev"
   type    = string
 }
 
