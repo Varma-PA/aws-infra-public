@@ -71,13 +71,16 @@ jobs:
       - name: Configure AWS Credentials
         uses: aws-actions/configure-aws-credentials@v1
         with:
-          aws-region: us-east-1
-          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY }}
+          # aws-region: us-east-1
+          # aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY }}
+          # aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: us-east-1
 
       - name: Configure dev Profile
         run: |
-          aws configure set aws_access_key_id ${{ secrets.AWS_ACCESS_KEY }} --profile dev
+          aws configure set aws_access_key_id ${{ secrets.AWS_ACCESS_KEY_ID }} --profile dev
           aws configure set aws_secret_access_key ${{ secrets.AWS_SECRET_ACCESS_KEY }} --profile dev
 
       - name: Checkout
