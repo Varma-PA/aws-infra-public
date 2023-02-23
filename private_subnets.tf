@@ -4,7 +4,7 @@ resource "aws_subnet" "private_1" {
 
   cidr_block = var.subnet_1_private_cidr
 
-  availability_zone = data. aws_availability_zones.available.names[0]
+  availability_zone = data.aws_availability_zones.available.names[0]
 
   tags = {
     "Name" = "Terraform Private Subnet 1"
