@@ -1,6 +1,6 @@
 data "aws_ami" "my_latest_ami" {
   # owners      = ["141894463187"]
-  owners = var.ami_owner_id
+  owners      = var.ami_owner_id
   most_recent = true
 }
 
@@ -14,8 +14,8 @@ resource "aws_instance" "webapp-instance" {
 
   root_block_device {
     delete_on_termination = true
-    volume_size = var.volume_size
-    volume_type = var.volume_type
+    volume_size           = var.volume_size
+    volume_type           = var.volume_type
   }
   disable_api_termination = false
 

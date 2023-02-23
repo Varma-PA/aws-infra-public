@@ -67,23 +67,23 @@ variable "route_table_internet_gateway_cidr" {
 # }
 
 
-variable "ami_owner_id"{
-  type = list(string)
+variable "ami_owner_id" {
+  type    = list(string)
   default = ["141894463187"]
 }
 
 variable "instance_type" {
-  type = string
+  type    = string
   default = "t2.micro"
 }
 
 
-variable "volume_size"{
-  type = number
+variable "volume_size" {
+  type    = number
   default = 50
 }
 
 variable "volume_type" {
-  type = string
+  type    = string
   default = "gp2"
 }
