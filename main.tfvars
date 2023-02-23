@@ -15,7 +15,7 @@ subnet_3_public_cidr  = "10.0.5.0/24"
 subnet_3_private_cidr = "10.0.6.0/24"
 
 
-ami_owner_id = ["141894463187"]
+ami_owner_id  = ["141894463187"]
 instance_type = "t2.micro"
-volume_size = 50
-volume_type = "gp2"
+volume_size   = 50
+volume_type   = "gp2"
