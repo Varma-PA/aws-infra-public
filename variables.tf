@@ -65,3 +65,25 @@ variable "route_table_internet_gateway_cidr" {
 #   # default     = ["us-east-1a", "us-east-1b"]
 #   description = "Describing the values for availability zones"
 # }
+
+
+variable "ami_owner_id"{
+  type = list(string)
+  default = ["141894463187"]
+}
+
+variable "instance_type" {
+  type = string
+  default = "t2.micro"
+}
+
+
+variable "volume_size"{
+  type = number
+  default = 50
+}
+
+variable "volume_type" {
+  type = string
+  default = "gp2"
+}
