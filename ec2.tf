@@ -15,6 +15,8 @@ resource "aws_instance" "webapp-instance" {
     volume_size = 50
     volume_type = "gp2"
   }
+  disable_api_termination = false
+
 
   vpc_security_group_ids = [aws_security_group.webapp_security_grip.id]
 

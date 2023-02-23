@@ -48,7 +48,7 @@ resource "aws_security_group" "webapp_security_grip" {
   }
 
   ingress {
-    description = "Https to EC2"
+       description = "Https to EC2"
     from_port   = 443
     to_port     = 443
     protocol    = "tcp"
