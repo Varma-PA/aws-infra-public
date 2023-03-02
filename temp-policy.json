@@ -1,0 +1,13 @@
+{
+  "Id": "Policy1677636482417",
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Sid": "Stmt1677636475374",
+      "Action": ["s3:DeleteObject", "s3:GetObject", "s3:PutObject"],
+      "Effect": "Allow",
+      "Resource": "arn:aws:s3:::s3-csye-6225-20230301014347703000000001",
+      "Principal": "*"
+    }
+  ]
+}
