@@ -1,0 +1,15 @@
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Sid": "public",
+      "Effect": "Allow",
+      "Principal": "*",
+      "Action": ["s3:*"],
+      "Resource": [
+        "arn:aws:s3:::s3-csye-6225-product-image",
+        "arn:aws:s3:::s3-csye-6225-product-image/*"
+      ]
+    }
+  ]
+}
