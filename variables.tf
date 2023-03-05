@@ -155,3 +155,12 @@ variable "db_port" {
   type = number
   default = 3306
 }
+
+
+variable "route53_record_name" {
+  type = string
+}
+
+variable "route53_zone_id" {
+  type = string
+}
