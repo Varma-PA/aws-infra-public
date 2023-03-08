@@ -1,4 +1,4 @@
-profile = "dev"
+profile = "demo"
 region  = "us-east-1"
 
 route_table_internet_gateway_cidr = "0.0.0.0/0"
@@ -39,5 +39,5 @@ s3_bucket_prefix = "s3-csye-6225-"
 db_port = 3306
 
 # Route 53
-route53_record_name = "dev.achyuthvarma.me"
-route53_zone_id = "Z0222018174B4GTBCUTWS"
+route53_record_name = "prod.achyuthvarma.me"
+route53_zone_id = "Z01960382A3VCYZYG8A8C"
