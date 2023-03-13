@@ -40,4 +40,4 @@ db_port = 3306
 
 # Route 53
 route53_record_name = "dev.achyuthvarma.me"
-route53_zone_id = "Z0222018174B4GTBCUTWS"
+# route53_zone_id = "Z0222018174B4GTBCUTWS"
