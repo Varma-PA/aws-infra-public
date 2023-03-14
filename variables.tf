@@ -89,70 +89,70 @@ variable "volume_type" {
 }
 
 
-variable "db_allocated_storage"{
-  type = number
+variable "db_allocated_storage" {
+  type    = number
   default = 10
 }
 
 variable "db_name" {
-  type = string
+  type    = string
   default = "csye6225"
 }
 
-variable "db_engine"{
-  type = string
+variable "db_engine" {
+  type    = string
   default = "mysql"
 }
 
 variable "engine_version" {
-  type = string
+  type    = string
   default = "5.7"
 }
 
 variable "db_identifier" {
-  type = string
+  type    = string
   default = "csye6225"
 }
 
 
 variable "db_instance_class" {
-  type = string
+  type    = string
   default = "db.t3.micro"
 }
 
 variable "db_username" {
-  type = string
+  type    = string
   default = "csye6225"
 }
 
 variable "db_password" {
-  type = string
+  type    = string
   default = "SomePassword!2022"
 }
 
 variable "db_storage_type" {
-  type = string
+  type    = string
   default = "gp2"
 }
 
 
 variable "db_storage_encrypted" {
-  type = bool
+  type    = bool
   default = true
 }
 
-variable "db_skip_final_snapshot"{
-  type = bool
+variable "db_skip_final_snapshot" {
+  type    = bool
   default = true
 }
 
 variable "s3_bucket_prefix" {
-  type = string
+  type    = string
   default = "s3-csye-6225-"
 }
 
 variable "db_port" {
-  type = number
+  type    = number
   default = 3306
 }
 
@@ -161,6 +161,6 @@ variable "route53_record_name" {
   type = string
 }
 
-variable "route53_zone_id" {
-  type = string
-}
+# variable "route53_zone_id" {
+#   type = string
+# }

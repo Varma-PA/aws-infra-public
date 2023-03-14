@@ -23,14 +23,14 @@ volume_type   = "gp2"
 # Database Var files
 db_allocated_storage = 10
 # db_name = 
-db_engine = "mysql"
-engine_version = "5.7"
-db_identifier = "csye6225"
+db_engine         = "mysql"
+engine_version    = "5.7"
+db_identifier     = "csye6225"
 db_instance_class = "db.t3.micro"
 # db_username = 
 # db_password = 
-db_storage_type = "gp2"
-db_storage_encrypted = true
+db_storage_type        = "gp2"
+db_storage_encrypted   = true
 db_skip_final_snapshot = true
 
 
@@ -40,4 +40,3 @@ db_port = 3306
 
 # Route 53
 route53_record_name = "dev.achyuthvarma.me"
-# route53_zone_id = "Z0222018174B4GTBCUTWS"
