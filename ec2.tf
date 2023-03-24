@@ -30,6 +30,8 @@ resource "aws_instance" "webapp-instance" {
 
   subnet_id = aws_subnet.public_1.id
 
+  # iam_instance_profile = [aws_iam_instance_profile.ec2_profile.name, aws_iam_instance_profile.cloudwatch_profile.name]
+
   iam_instance_profile = aws_iam_instance_profile.ec2_profile.name
 
   # subnet_id = "subnet-0ba5c247599d6d5b1"
@@ -45,7 +47,14 @@ resource "aws_instance" "webapp-instance" {
   echo DB_PASSWORD="${aws_db_instance.mysql_database.password}" >> .env
   echo DB_HOST="${aws_db_instance.mysql_database.address}" >> .env
   echo PORT="3002" >> .env
-  echo AWS_S3_BUCKET_NAME="${aws_s3_bucket.my_s3_bucket.bucket}" >> .env  
+  echo AWS_S3_BUCKET_NAME="${aws_s3_bucket.my_s3_bucket.bucket}" >> .env
+  echo NODE_ENV="production" >> .env  
+
+  sudo /opt/aws/amazon-cloudwatch-agent/bin/amazon-cloudwatch-agent-ctl \
+    -a fetch-config \
+    -m ec2 \
+    -c file:/home/ec2-user/cloud-watch-config.json \
+    -s
 
   sudo systemctl daemon-reload
   sudo systemctl enable nginx
@@ -80,5 +89,14 @@ resource "aws_instance" "webapp-instance" {
 resource "aws_iam_instance_profile" "ec2_profile" {
   name = "ec2_profile"
   role = aws_iam_role.EC2-CSYE6225.name
+  # roles = [
+  #   aws_iam_role.EC2-CSYE6225.name,
+  #   aws_iam_role.cloud_watch_role.name
+  # ]
 }
+
+# resource "aws_iam_instance_profile" "cloudwatch_profile" {
+#   name = "cloudwatch_profile"
+#   role = aws_iam_role.cloud_watch_role.name
+# }
 
