@@ -6,65 +6,69 @@ data "aws_ami" "my_latest_ami" {
 
 
 
-resource "aws_instance" "webapp-instance" {
+# resource "aws_instance" "webapp-instance" {
 
-  depends_on = [
-    aws_db_instance.mysql_database
-  ]
+#   depends_on = [
+#     aws_db_instance.mysql_database
+#   ]
 
-  ami = data.aws_ami.my_latest_ami.id
+#   ami = data.aws_ami.my_latest_ami.id
 
-  instance_type = var.instance_type
+#   instance_type = var.instance_type
 
-  root_block_device {
-    delete_on_termination = true
-    volume_size           = var.volume_size
-    volume_type           = var.volume_type
-  }
-  disable_api_termination = false
+#   root_block_device {
+#     delete_on_termination = true
+#     volume_size           = var.volume_size
+#     volume_type           = var.volume_type
+#   }
+#   disable_api_termination = false
 
 
-  vpc_security_group_ids = [aws_security_group.webapp_security_grip.id]
+#   vpc_security_group_ids = [aws_security_group.webapp_security_group.id]
 
-  # vpc_security_group_ids = ["sg-0b7a2684dac5465fd"]
+#   # vpc_security_group_ids = ["sg-0b7a2684dac5465fd"]
 
-  subnet_id = aws_subnet.public_1.id
+#   subnet_id = aws_subnet.public_1.id
 
-  # iam_instance_profile = [aws_iam_instance_profile.ec2_profile.name, aws_iam_instance_profile.cloudwatch_profile.name]
+#   # iam_instance_profile = [aws_iam_instance_profile.ec2_profile.name, aws_iam_instance_profile.cloudwatch_profile.name]
 
-  iam_instance_profile = aws_iam_instance_profile.ec2_profile.name
+#   iam_instance_profile = aws_iam_instance_profile.ec2_profile.name
 
-  # subnet_id = "subnet-0ba5c247599d6d5b1"
+#   # subnet_id = "subnet-0ba5c247599d6d5b1"
 
-  # user_data = file("initialize-webapp.sh")
+#   # user_data = file("initialize-webapp.sh")
 
-  user_data = <<EOF
-  #!/bin/bash
-  cd /home/ec2-user
-  touch .env
-  echo DB_DATABASE="${aws_db_instance.mysql_database.db_name}" >> .env
-  echo DB_USERNAME="${aws_db_instance.mysql_database.username}" >> .env
-  echo DB_PASSWORD="${aws_db_instance.mysql_database.password}" >> .env
-  echo DB_HOST="${aws_db_instance.mysql_database.address}" >> .env
-  echo PORT="3002" >> .env
-  echo AWS_S3_BUCKET_NAME="${aws_s3_bucket.my_s3_bucket.bucket}" >> .env
-  echo NODE_ENV="production" >> .env  
+#   user_data = <<EOF
+#   #!/bin/bash
+#   cd /home/ec2-user
+#   touch .env
+#   echo DB_DATABASE="${aws_db_instance.mysql_database.db_name}" >> .env
+#   echo DB_USERNAME="${aws_db_instance.mysql_database.username}" >> .env
+#   echo DB_PASSWORD="${aws_db_instance.mysql_database.password}" >> .env
+#   echo DB_HOST="${aws_db_instance.mysql_database.address}" >> .env
+#   echo PORT="3002" >> .env
+#   echo AWS_S3_BUCKET_NAME="${aws_s3_bucket.my_s3_bucket.bucket}" >> .env
+#   echo NODE_ENV="production" >> .env  
 
-  sudo /opt/aws/amazon-cloudwatch-agent/bin/amazon-cloudwatch-agent-ctl \
-    -a fetch-config \
-    -m ec2 \
-    -c file:/home/ec2-user/cloud-watch-config.json \
-    -s
+#   sudo /opt/aws/amazon-cloudwatch-agent/bin/amazon-cloudwatch-agent-ctl \
+#     -a fetch-config \
+#     -m ec2 \
+#     -c file:/home/ec2-user/cloud-watch-config.json \
+#     -s
 
-  sudo systemctl daemon-reload
-  sudo systemctl enable nginx
-  sudo systemctl start nginx
-  sudo systemctl enable webapp
-  sudo systemctl start webapp
+#   sudo systemctl daemon-reload
+#   sudo systemctl enable nginx
+#   sudo systemctl start nginx
+#   sudo systemctl enable webapp
+#   sudo systemctl start webapp
 
-  EOF
+#   EOF
 
-}
+#   tags = {
+#     "Name" = "My-Separate-Instance"
+#   }
+
+# }
 
 # resource "aws_instance" "my_ec2_instance" {
 

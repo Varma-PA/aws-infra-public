@@ -32,3 +32,12 @@ resource "aws_s3_bucket_server_side_encryption_configuration" "encryption_resour
 }
 # aws s3 rm s3://s3-csye-6225-product-image --recursive --profile dev
 # aws s3 rm s3://s3-csye-6225-20230302042950945600000001 --recursive --profile dev
+
+resource "aws_s3_bucket_public_access_block" "block_all_public_access" {
+  bucket = aws_s3_bucket.my_s3_bucket.id
+
+  block_public_acls       = true
+  block_public_policy     = true
+  ignore_public_acls      = true
+  restrict_public_buckets = true
+}

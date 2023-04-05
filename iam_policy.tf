@@ -61,7 +61,7 @@ resource "aws_iam_role" "EC2-CSYE6225" {
 }
 
 resource "aws_iam_role" "cloud_watch_role" {
-  
+
   name = "cloud_watch_role"
 
   assume_role_policy = jsonencode({
@@ -91,7 +91,7 @@ resource "aws_iam_role_policy_attachment" "attach_role_policy" {
 }
 
 resource "aws_iam_role_policy_attachment" "attach_role_policy_2" {
-  role = aws_iam_role.EC2-CSYE6225.name
+  role       = aws_iam_role.EC2-CSYE6225.name
   policy_arn = "arn:aws:iam::aws:policy/CloudWatchAgentServerPolicy"
 
 }
