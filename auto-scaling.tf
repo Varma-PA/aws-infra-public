@@ -73,117 +73,117 @@ resource "aws_autoscaling_group" "auto-scaling-group" {
   }
 }
 
-resource "aws_autoscaling_policy" "as_policy" {
+# resource "aws_autoscaling_policy" "as_policy" {
 
-  name = "auto_scaling_policy"
+#   name = "auto_scaling_policy"
 
-  policy_type = "TargetTrackingScaling"
+#   policy_type = "TargetTrackingScaling"
 
-  autoscaling_group_name = aws_autoscaling_group.auto-scaling-group.name
+#   autoscaling_group_name = aws_autoscaling_group.auto-scaling-group.name
 
-  # adjustment_type = "ChangeInCapacity"
+#   # adjustment_type = "ChangeInCapacity"
 
-  target_tracking_configuration {
-    predefined_metric_specification {
-      predefined_metric_type = "ASGAverageCPUUtilization"
+#   target_tracking_configuration {
+#     predefined_metric_specification {
+#       predefined_metric_type = "ASGAverageCPUUtilization"
 
-    }
-    target_value = 5.0
-  }
+#     }
+#     target_value = 5.0
+#   }
 
-  # cooldown = 10
+#   # cooldown = 10
 
   
 
+# }
+
+resource "aws_autoscaling_policy" "custom_scaling_policy_scale_up" {
+
+  name = "custom-csye-policy-scale-up"
+
+  autoscaling_group_name = aws_autoscaling_group.auto-scaling-group.name
+
+  adjustment_type = "ChangeInCapacity"
+
+  scaling_adjustment = 1
+
+  cooldown = 10
+
+  policy_type = "SimpleScaling"
+
 }
 
-# resource "aws_autoscaling_policy" "custom_scaling_policy_scale_up" {
+resource "aws_cloudwatch_metric_alarm" "average-cpu-alarm-increase" {
+  alarm_name = "average-cpu-alarm-scaleup"
 
-#   name = "custom-csye-policy-scale-up"
+  alarm_description = "Alarm Once average cpu usage increases"
 
-#   autoscaling_group_name = aws_autoscaling_group.auto-scaling-group.name
+  comparison_operator = "GreaterThanOrEqualToThreshold"
 
-#   adjustment_type = "ChangeInCapacity"
+  evaluation_periods = 2
 
-#   scaling_adjustment = 1
+  metric_name = "CPUUtilization"
 
-#   cooldown = 10
+  namespace = "AWS/EC2"
 
-#   policy_type = "SimpleScaling"
+  period = 120
 
-# }
+  statistic = "Average"
 
-# resource "aws_cloudwatch_metric_alarm" "average-cpu-alarm-increase" {
-#   alarm_name = "average-cpu-alarm-scaleup"
+  threshold = 5
 
-#   alarm_description = "Alarm Once average cpu usage increases"
+  dimensions = {
+    AutoScalingGroupName = aws_autoscaling_group.auto-scaling-group.name
+  }
 
-#   comparison_operator = "GreaterThanOrEqualToThreshold"
-
-#   evaluation_periods = 1
-
-#   metric_name = "CPUUtilization"
-
-#   namespace = "AWS/EC2"
-
-#   period = 10
-
-#   statistic = "Average"
-
-#   threshold = 5
-
-#   dimensions = {
-#     AutoScalingGroupName = aws_autoscaling_group.auto-scaling-group.name
-#   }
-
-#   alarm_actions = [aws_autoscaling_policy.custom_scaling_policy_scale_up.arn]
+  alarm_actions = [aws_autoscaling_policy.custom_scaling_policy_scale_up.arn]
 
 
-# }
+}
 
-# resource "aws_autoscaling_policy" "custom_scaling_policy_scale_down" {
+resource "aws_autoscaling_policy" "custom_scaling_policy_scale_down" {
 
-#   name = "custom-csye-policy-scale-down"
+  name = "custom-csye-policy-scale-down"
 
-#   autoscaling_group_name = aws_autoscaling_group.auto-scaling-group.name
+  autoscaling_group_name = aws_autoscaling_group.auto-scaling-group.name
 
-#   adjustment_type = "ChangeInCapacity"
+  adjustment_type = "ChangeInCapacity"
 
-#   scaling_adjustment = -1
+  scaling_adjustment = -1
 
-#   cooldown = 10
+  cooldown = 10
 
-#   policy_type = "SimpleScaling"
+  policy_type = "SimpleScaling"
 
-# }
+}
 
-# resource "aws_cloudwatch_metric_alarm" "average-cpu-alarm-decrease" {
-#   alarm_name = "average-cpu-alarm-scaledown"
+resource "aws_cloudwatch_metric_alarm" "average-cpu-alarm-decrease" {
+  alarm_name = "average-cpu-alarm-scaledown"
 
-#   alarm_description = "Alarm Once average cpu usage increases"
+  alarm_description = "Alarm Once average cpu usage increases"
 
-#   comparison_operator = "LessThanThreshold"
+  comparison_operator = "LessThanThreshold"
 
-#   evaluation_periods = 1
+  evaluation_periods = 2
 
-#   metric_name = "CPUUtilization"
+  metric_name = "CPUUtilization"
 
-#   namespace = "AWS/EC2"
+  namespace = "AWS/EC2"
 
-#   period = 10
+  period = 120
 
-#   statistic = "Average"
+  statistic = "Average"
 
-#   threshold = 5
+  threshold = 3
 
-#   dimensions = {
-#     AutoScalingGroupName = aws_autoscaling_group.auto-scaling-group.name
-#   }
+  dimensions = {
+    AutoScalingGroupName = aws_autoscaling_group.auto-scaling-group.name
+  }
 
-#   alarm_actions = [aws_autoscaling_policy.custom_scaling_policy_scale_down.arn]
+  alarm_actions = [aws_autoscaling_policy.custom_scaling_policy_scale_down.arn]
 
 
-# }
+}
 
 
 
