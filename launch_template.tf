@@ -14,7 +14,7 @@ resource "aws_launch_template" "launch_template" {
 
   image_id = data.aws_ami.my_latest_ami.id
 
-  key_name = "AWS_DEV_MACBOOK_PRO"
+#   key_name = "AWS_DEV_MACBOOK_PRO"
 
   instance_type = "t2.micro"
 

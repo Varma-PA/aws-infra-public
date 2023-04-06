@@ -6,7 +6,7 @@ resource "aws_launch_configuration" "auto_scaling_launch_configuration" {
 
   image_id = data.aws_ami.my_latest_ami.id
 
-  key_name = "AWS_DEV_MACBOOK_PRO"
+  # key_name = "AWS_DEV_MACBOOK_PRO"
 
   associate_public_ip_address = true
 
