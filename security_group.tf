@@ -31,16 +31,16 @@ resource "aws_security_group" "webapp_security_group" {
   #     },
   #   ]
 
-  ingress {
-    description = "SSH to EC2"
-    from_port   = 22
-    to_port     = 22
-    protocol    = "tcp"
-    # cidr_blocks = ["0.0.0.0/0"]
-    # cidr_blocks = []
-    security_groups = [aws_security_group.load_balancer_security_group.id]
+  # ingress {
+  #   description = "SSH to EC2"
+  #   from_port   = 22
+  #   to_port     = 22
+  #   protocol    = "tcp"
+  #   # cidr_blocks = ["0.0.0.0/0"]
+  #   # cidr_blocks = []
+  #   security_groups = [aws_security_group.load_balancer_security_group.id]
 
-  }
+  # }
 
   ingress {
     description = "Http to EC2"
